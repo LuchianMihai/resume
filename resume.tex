@@ -60,7 +60,7 @@ Brasov, Romania\\  +40 (0731) 757 891}
         \item[] Strong emphasis on Command Line Interface over Graphical User Interface
         \end{itemize}
         
-   {\bf Software Skills}	
+   {\bf Software Skills}   
         \begin{itemize}
         \item[] Moderate experience using C programming language for embedded systems developement and
         Intel x86 architecture.
@@ -69,7 +69,7 @@ Brasov, Romania\\  +40 (0731) 757 891}
         {\it ``Bash''}, {\it ``Zsh''}, {\it ``Dash''}, {\it ``Mksh''}.
         \end{itemize}
 
-   {\bf Hardware skills}	
+   {\bf Hardware skills}   
         \begin{itemize}
         \item[] Moderate experience using NGSpice simulation tool in both GUI and CLI modes.
         \item[] Experienced user with Altium Designer, KiCAD, OrCAD and Proteus tools,
@@ -105,21 +105,84 @@ Brasov, Romania\\  +40 (0731) 757 891}
 ``The Quality-Assurance Test of the ATLAS New Small Wheel Read-Out Controller ASIC,''\\
 {\it S. Popa, R. Coliban, {\bf M. Luchian}, M. Ivanovici,}\\
 Proceeding of Science (PoS), 081, 2019
-
- 
-``Clock and data signals synchronization for an FPGA-based ASIC testing setup,''\\
+``Clock and data signals synchronization for an FPGA-based ASIC testing setup,''\\ 
 {\it S. Popa, {\bf M. Luchian}, M. Ivanovici,}\\ 
-2019 International Symposium on Signals, Circuits and Systems (ISSCS), 1-4, 2019
-
+2019 International Symposium on Signals, Circuits and Systems (ISSCS), 1-4, 2019\\
 \noindent\rule{\textwidth}{0.4pt}
 \section{PROJECTS} 
 \vspace{0.1in} 
+   
+    {\bf Automatizare sistem de testare circuite integrate de tip ASIC}\\
+    {\it Bachelor degree thesis} \\
+    Contributed to an existing hardware platform used to test and validate Read Out Controller ASIC.
+    Overall project goal was to improve mass testing efficiency. New new architecture consited of the existing 
+    hardware test bench, now controlled by a 32bit softcore MCU MicroBlaze. The new MCU was used to control input stimuli and
+    test suites, monitor output packets, processed receive data and send the results to a host pc used to start the testing process.
 
     {\bf Blue Streamline,} {\it ``The racing team of Transilvania university''}\\
     Electronics department leader assigned to coordinate, design, manufacture and implement the electronics modules
     which controls the consumers of an single seater. Attendant as an team member at international competition held at 
-    Silverstone (UK) and Catalunya (Spain).
-
+    Silverstone (UK) and Catalunya (Spain).\\
+    Projects developed as team member\\
+    {\bf Telemetry: }
+    \begin{itemize}
+        \item Project implemented during second year of bachelor degree.
+        Project goal was to transmit data over zigbee protocol, using xbee modules.
+        Project was split in receiving module and sending module. I was in charge with the implementation
+        of the later.
+        \item Using AT90CAN32 MCU data was read from an CAN interface, processed and
+        sent to an Xbee module over UART interface. Xbee module was configured to use API mode, as router node.
+        \item The hardware implementation was made using Proteus EDA tool suite for the schematic, layout
+        and greber files generation.
+        \item The software implementation was made using AtmelStudio.
+        Code/hex upload was made using usbasp progammer over ISP interface, through avrdude software
+        and AVRDUDESS GUI.
+        \item Endproduct consisted of two-sided PCB manufacured in-house, hand-soldered components 
+        and manual code upload, enclosed in an 3D printed case attached on the steering wheel plate.
+    \end{itemize}
+    {\bf Dashboad / HMI: }
+    \begin{itemize}
+        \item Project implemented during third year of bachelor degree.
+        Projects goal was to monitor engine's critical parameters and ofer the single seater's driver
+        an way to interact with the engine and paddock through use of push-buttons. 
+        \item We colected data using AT90CAN32 MCU from CAN interface provided by the 
+        AEM Series 2 ECU. The procesed CAN messages were sent to 7 segments display using shift registers 
+        and alphanumeric displays on 4 wire parallel interface, also the engine's RPM was displayed using LEDs.
+        Additional push-buttons were used for gear shifting, and radio communication with the paddock.
+        Same CAN interface was used to exchange data between other electronic module present inside the vehicle.
+        \item The hardware implementation was made using Proteus EDA tool suite for the schematic, layout
+        and greber files generation.
+        \item The software implementation was made using AtmelStudio.
+        Code/hex upload was made using usbasp progammer over ISP interface, through avrdude software
+        and AVRDUDESS GUI.
+        \item Endproduct consisted of two-sided PCB, hand-soldered components and manual code upload, 
+        enclosed in an 3D printed case attached on the steering wheel plate.
+    \end{itemize}
+    {\bf Power Module / PDU: }
+    \begin{itemize}
+        \item Project implemented during last year of bachelor degree.
+        Projects goal was to monitor and control power consumers present on the single-seater.
+        \item We used AT90CAN32 MCU to recive data from an CAN interface provided by AEM Infinity ECU.
+        Power management was achived using high side smart drivers manufactured by ST Electronics.
+        \item The hardware part of the new project was developed using Altium Designer during summer internship
+        at PREH ROMANIA S.R.L. layout department. The board was routed as an 4 layer PCB.
+        \item The software part was developed under Linux environment, using ViM as editor, CLI based workflow,
+        git for version control, build management using makefiles. 
+        During first year mastership degree an FreeRTOS was compiled/developed for this board.
+        \item This project was never finished. Was not used in any competition.
+    \end{itemize}
+    {\bf Brake System Plausability Device / BSPD: }
+    \begin{itemize}
+        \item Project implemented during fisrt year mastership degree.
+        Project goal was to be compliant with the new ruleset in Formula Student competition 
+        for both electric and combustion vehicles. The new board purpose was to cut the main power supply
+        if the driver pushed both acceleration and brake pedal at the same time over an sepcific threshold and time.
+        \item Fully analog board using LM393 and NE555 timers.
+        \item Board developed using KiCAD tool suite. 
+        Time domain (transient) simulation achived using ngspice with KiCAD integration.
+        \item End product manufactured abroad, consisting of two-sided PCB, 
+        through hole only, hand-soldered components.
+    \end{itemize}
     {\bf T.I.E.} {\it Tehnici de Interconectare in Electronica, }\\
     Attendant at international competition during years:
     2016 (Suceava), 2017 (Iasi), 2018(Ploiesti)
