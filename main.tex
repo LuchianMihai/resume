@@ -119,7 +119,6 @@
 
 %-------------------------------------------
 
-
 \begin{document}
 
 %---------- HEADING ----------
@@ -140,12 +139,10 @@
     \faMapMarker \hspace{.5pt} \href{https://www.google.com/maps/place/Bra%C8%99ov/@45.6525685,25.5140627,12z/data=!3m1!4b1!4m6!3m5!1s0x40b35b862aa214f1:0x6cf5f2ef54391e0f!8m2!3d45.6426802!4d25.5887252!16zL20vMGhqdGc?entry=ttu}{Brasov, Romania}
 \end{center}
 
-
-
 %----------- EDUCATION -----------
 
 \section{Education}
-  \vspace{3pt}
+  %\vspace{3pt}
   \resumeSubHeadingListStart
     
     \resumeSubheading
@@ -164,37 +161,9 @@
     
   \resumeSubHeadingListEnd
 
-
-%----------- RESEARCH EXPERIENCE -----------
-
-\section{Research Experience}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
-  
-    \resumeSubheading
-      {The Quality-Assurance Test of the ATLAS New Small Wheel Read-Out Controller ASIC}{}
-      {Proceeding of Science (PoS), 081, 2019}{***}
-        \resumeItemListStart
-            \resumeItem{\textbf{Authors:} S. Popa, R. Coliban, \textbf{M. Luchian}, M. Ivanovici}
-            \resumeItem{Undergraduate Research Assistant @ \textit{Transilvania University of Brasov}}
-        \resumeItemListEnd
-
-    \resumeSubheading
-      {Clock and data signals synchronization for an FPGA-based ASIC testing setup}{}
-      {2019 International Symposium on Signals, Circuits and Systems (ISSCS), 1-4, 2019}{***}
-        \resumeItemListStart
-            \resumeItem{\textbf{Authors:} S. Popa, \textbf{M. Luchian}, M. Ivanovici}
-            \resumeItem{Undergraduate Research Assistant @ \textit{Transilvania University of Brasov}}
-        \resumeItemListEnd
-    
-  \resumeSubHeadingListEnd
-
-
-
 %----------- WORK EXPERIENCE -----------
 
 \section{Work Experience}
-  \vspace{3pt}
   \resumeSubHeadingListStart
     
     \resumeSubheading
@@ -261,7 +230,167 @@
     
   \resumeSubHeadingListEnd
 
+%----------- RESEARCH EXPERIENCE -----------
 
+\section{Research Experience}
+  \resumeSubHeadingListStart
+  
+    \resumeSubheading
+      {The Quality-Assurance Test of the ATLAS New Small Wheel Read-Out Controller ASIC}{}
+      {Proceeding of Science (PoS), 081, 2019}{***}
+        \resumeItemListStart
+            \resumeItem{\textbf{Authors:} S. Popa, R. Coliban, \textbf{M. Luchian}, M. Ivanovici}
+            \resumeItem{Undergraduate Research Assistant @ \textit{Transilvania University of Brasov}}
+        \resumeItemListEnd
+
+    \resumeSubheading
+      {Clock and data signals synchronization for an FPGA-based ASIC testing setup}{}
+      {2019 International Symposium on Signals, Circuits and Systems (ISSCS), 1-4, 2019}{***}
+        \resumeItemListStart
+            \resumeItem{\textbf{Authors:} S. Popa, \textbf{M. Luchian}, M. Ivanovici}
+            \resumeItem{Undergraduate Research Assistant @ \textit{Transilvania University of Brasov}}
+        \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+
+%----------- ORGANIZATIONS -----------
+
+\section{Organizations}
+  \resumeSubHeadingListStart
+    
+     \resumeOrganizationHeading
+       {Transivania University's of Brasov Racing Team \textit{``Blue Streamline''}}{Oct 2016 \textbf{--} Jul 2019}
+       {Formula Student Team Member, Lead of Electronics Department}
+    
+   \resumeSubHeadingListEnd
+
+%----------- PROJECTS -----------
+
+\section{Projects}
+  \resumeSubHeadingListStart
+    
+    \resumeProjectHeading
+      {\textbf{Power Distribution Module | PDM}}{\textit{Blue Streamline}}
+        \resumeItemListStart
+          \resumeItem{An Hardware / Software project devepoled as part of electronics department tasks}
+          \resumeItem{Projects goal was to monitor and control power consumers present of the single-seater}
+          \resumeItem{We used AT90CAN32 MCU to recive data from an CAN interface provided by AEM Infinity ECU.
+                      Power management was achived using high side smart drivers manufactured by ST Electronics.}
+          \resumeItem{The hardware part of the new project was developed using Altium Designer during summer internship
+                      at PREH ROMANIA S.R.L. R\&D department. The board was routed as an 4 layer PCB.}
+          \resumeItem{The software part was developed under Linux environment, CLI based workflow,
+                      git for version control, build management using makefiles. 
+                      During first year mastership degree an FreeRTOS was integrated on this board.}
+        \resumeItemListEnd
+    
+    \resumeProjectHeading
+      {\textbf{Dashboard | HMI}}{\textit{Blue Streamline}}
+        \resumeItemListStart
+          \resumeItem{Project goal was to monitor engine's critical parameters and ofer the single seater's driver
+                      an way to interact with the engine and paddock through use of push-buttons.}
+          \resumeItem{We colected data using AT90CAN32 MCU from CAN interface provided by the
+                      AEM Series 2 ECU. The procesed CAN messages were sent to 7 segments display using shift registers 
+                      and alphanumeric displays on 4 wire parallel interface, also the engine's RPM was displayed using LEDs.
+                      Additional push-buttons were used for gear shifting, and radio communication with the paddock.
+                      Same CAN interface was used to exchange data between other electronic module present inside the vehicle.}
+          \resumeItem{The hardware implementation was made using Proteus EDA tool suite for the schematic, layout
+                      and greber files generation.}
+          \resumeItem{The software implementation was made using AtmelStudio.
+                      Code/hex upload was made using usbasp progammer over ISP interface, through avrdude software
+                      and AVRDUDESS GUI.}
+          \resumeItem{Endproduct consisted of two-sided PCB, hand-soldered components and manual code upload, 
+                      enclosed in an 3D printed case attached on the steering wheel plate.}
+        \resumeItemListEnd
+    
+    \resumeProjectHeading
+      {\textbf{Brake System Plausability Device | BSPD}}{\textit{Blue Streamline}}
+        \resumeItemListStart
+          \resumeItem{Project implemented during fisrt year mastership degree.
+                      Project goal was to be compliant with the new ruleset in Formula Student competition 
+                      for both electric and combustion vehicles. The new board purpose was to cut the main power supply
+                      if the driver pushed both acceleration and brake pedal at the same time over an sepcific threshold and time.}
+          \resumeItem{Fully analog board using LM393 and NE555 timers.}
+          \resumeItem{Board developed using KiCAD tool suite.
+                      Time domain (transient) simulation achived using ngspice with KiCAD integration.}
+          \resumeItem{End product manufactured abroad, consisting of two-sided PCB, 
+                      through hole only, hand-soldered components.}
+        \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Data Aquisition and Telemetry system | DATS}}{\textit{Blue Streamline}}
+        \resumeItemListStart
+          \resumeItem{Project aims to provide an way to aquire and stream live data 
+                      to an remote or local server and ease the data pre/post/processing using Matlab/Symulink interaction}
+          \resumeItem{Project uses an Raspberry Pi Zero 2 and esp32 boards to access data streamed on CAN interfaces}
+        \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+
+
+
+%----------- SKILLS -----------
+
+\section{Skills}
+  \resumeSubHeadingListStart
+    \small{\item{
+        \textbf{Programming:}{ C, C++, Python, MySQL, Verilog, SystemVerilog } \\ \vspace{3pt}
+        
+        \textbf{Technologies:}{ Git, Linux, Shell, Ngspice } \\ \vspace{3pt}
+        
+        \textbf{Languages:}{ Romanian (Native), English (Professional) }
+        
+        % \textbf{Frameworks}{: X, X, X} \\
+        % \textbf{Developer Tools}{: X, X, X} \\
+        % \textbf{Libraries}{: X, X, X} \\
+        % \textbf{Applications}{: X, X, X}
+    }}
+  \resumeSubHeadingListEnd
+
+%----------- HOBBIES -----------
+
+\section{Hobbies}
+  \resumeSubHeadingListStart
+
+    \item{
+        Licensing as an Skydiver \textit{@ Romanian Air Club.}
+
+      Core Electrical Scrutineer \textit{@ Formula Student Spain.}
+
+      Hobbyst welder, Experienced in TIG welding with steel and aluminium filler rods as well as stick welding.
+
+      Hobbyst composite materials manufacturer, Experienced in Carbon fiber, Kevlar fiber and Glass fiber.
+    }
+
+  \resumeSubHeadingListEnd
+
+%----------- RELEVANT COURSEWORK -----------
+
+%\section{Relevant Coursework}
+  %\vspace{2pt}
+  %\resumeSubHeadingListStart
+    %\small{\item{
+        %\textbf{Major coursework:}{ Calculus I-II, Matrix Theory, Differential Equations, Materials Science, Electrical Circuits I-II, Digital System Design, Numerical Methods, Probability Theory, Electronics I-II, Signals and Systems, Electromagnetic Field Theory, Energy Conversion, System Dynamics and Control, Communication Engineering} \\ \vspace{3pt}
+        %
+        %\textbf{Minor coursework:}{ Discrete Computational Structures, Introduction to Object-Oriented Programming, Data Structures and Algorithms}
+    %}}
+  %\resumeSubHeadingListEnd
+
+%----------- CERTIFICATES -----------
+
+% \section{Certificates}
+  % \resumeSubHeadingListStart
+    
+    % \resumeOrganizationHeading
+      % {Procter \& Gamble VIA Certificate Program}{Feb 2022}{Business Skills, Data and Digital Skills, Project Management and Personal Productivity}
+    
+  % \resumeSubHeadingListEnd
+
+%----------- REFERENCES -----------
+
+% \section{References}
+  % \resumeSubHeadingListStart
+    
+  % \resumeSubHeadingListEnd
 
 %----------- AWARDS & ACHIEVEMENTS -----------
 
@@ -284,147 +413,6 @@
 %        \textbf{Kocaeli Science High School Salutatorian Award:}{ Graduated as the second-highest ranked student in my class.}
 %    }}
 %  \resumeSubHeadingListEnd
-
-
-
-%----------- ORGANIZATIONS -----------
-
-\section{Organizations}
-  \resumeSubHeadingListStart
-    
-     \resumeOrganizationHeading
-       {Transivania's University of Brasov Racing Team \textit{``Blue Streamline''}}{Oct 2016 \textbf{--} Jul 2019}
-       {Formula Student Team Member, Lead of Electronics Department}
-    
-   \resumeSubHeadingListEnd
-
-%----------- PROJECTS -----------
-
-\section{Projects}
-    \vspace{3pt}
-    \resumeSubHeadingListStart
-      
-      \resumeProjectHeading
-        {\textbf{Power Distribution Module | PDM}}{\textit{Blue Streamline}}
-          \resumeItemListStart
-            \resumeItem{An Hardware / Software project devepoled as part of electronics department tasks}
-            \resumeItem{Projects goal was to monitor and control power consumers present of the single-seater}
-            \resumeItem{We used AT90CAN32 MCU to recive data from an CAN interface provided by AEM Infinity ECU.
-                        Power management was achived using high side smart drivers manufactured by ST Electronics.}
-            \resumeItem{The hardware part of the new project was developed using Altium Designer during summer internship
-                        at PREH ROMANIA S.R.L. layout department. The board was routed as an 4 layer PCB.}
-            \resumeItem{The software part was developed under Linux environment, using ViM as editor, CLI based workflow,
-                        git for version control, build management using makefiles. 
-                        During first year mastership degree an FreeRTOS was integrated on this board.}
-          \resumeItemListEnd
-      
-      \resumeProjectHeading
-        {\textbf{Dashboard | HMI}}{\textit{Blue Streamline}}
-          \resumeItemListStart
-            \resumeItem{Project goal was to monitor engine's critical parameters and ofer the single seater's driver
-                        an way to interact with the engine and paddock through use of push-buttons.}
-            \resumeItem{We colected data using AT90CAN32 MCU from CAN interface provided by the
-                        AEM Series 2 ECU. The procesed CAN messages were sent to 7 segments display using shift registers 
-                        and alphanumeric displays on 4 wire parallel interface, also the engine's RPM was displayed using LEDs.
-                        Additional push-buttons were used for gear shifting, and radio communication with the paddock.
-                        Same CAN interface was used to exchange data between other electronic module present inside the vehicle.}
-            \resumeItem{The hardware implementation was made using Proteus EDA tool suite for the schematic, layout
-                        and greber files generation.}
-            \resumeItem{The software implementation was made using AtmelStudio.
-                        Code/hex upload was made using usbasp progammer over ISP interface, through avrdude software
-                        and AVRDUDESS GUI.}
-            \resumeItem{Endproduct consisted of two-sided PCB, hand-soldered components and manual code upload, 
-                        enclosed in an 3D printed case attached on the steering wheel plate.}
-          \resumeItemListEnd
-      
-      \resumeProjectHeading
-        {\textbf{Brake System Plausability Device | BSPD}}{\textit{Blue Streamline}}
-          \resumeItemListStart
-            \resumeItem{Project implemented during fisrt year mastership degree.
-                        Project goal was to be compliant with the new ruleset in Formula Student competition 
-                        for both electric and combustion vehicles. The new board purpose was to cut the main power supply
-                        if the driver pushed both acceleration and brake pedal at the same time over an sepcific threshold and time.}
-            \resumeItem{Fully analog board using LM393 and NE555 timers.}
-            \resumeItem{Board developed using KiCAD tool suite.
-                        Time domain (transient) simulation achived using ngspice with KiCAD integration.}
-            \resumeItem{End product manufactured abroad, consisting of two-sided PCB, 
-                        through hole only, hand-soldered components.}
-          \resumeItemListEnd
-
-      \resumeProjectHeading
-        {\textbf{Data Aquisition and Telemetry system | DATS}}{\textit{Blue Streamline}}
-          \resumeItemListStart
-            \resumeItem{Project aims to provide an way to aquire and stream live data 
-                        to an remote or local server and ease the data pre/post/processing using Matlab/Symulink interaction}
-            \resumeItem{Project uses an Raspberry Pi Zero 2 and esp32 boards to access data streamed on CAN interfaces}
-          \resumeItemListEnd
-      
-    \resumeSubHeadingListEnd
-
-
-
-%----------- SKILLS -----------
-
-\section{Skills}
-  \vspace{2pt}
-  \resumeSubHeadingListStart
-    \small{\item{
-        \textbf{Programming:}{ C, C++, MySQL, Verilog, SystemVerilog, Python} \\ \vspace{3pt}
-        
-        \textbf{Technologies:}{ Git, Arduino, ROS, Simulink, LTspice, Xilinx ISE} \\ \vspace{3pt}
-        
-        \textbf{Languages:}{ Turkish (Native), English (Professional), German (Elementary)}
-        
-        % \textbf{Frameworks}{: X, X, X} \\
-        % \textbf{Developer Tools}{: X, X, X} \\
-        % \textbf{Libraries}{: X, X, X} \\
-        % \textbf{Applications}{: X, X, X}
-    }}
-  \resumeSubHeadingListEnd
-
-
-
-%----------- RELEVANT COURSEWORK -----------
-
-\section{Relevant Coursework}
-  \vspace{2pt}
-  \resumeSubHeadingListStart
-    \small{\item{
-        \textbf{Major coursework:}{ Calculus I-II, Matrix Theory, Differential Equations, Materials Science, Electrical Circuits I-II, Digital System Design, Numerical Methods, Probability Theory, Electronics I-II, Signals and Systems, Electromagnetic Field Theory, Energy Conversion, System Dynamics and Control, Communication Engineering} \\ \vspace{3pt}
-        
-        \textbf{Minor coursework:}{ Discrete Computational Structures, Introduction to Object-Oriented Programming, Data Structures and Algorithms}
-    }}
-  \resumeSubHeadingListEnd
-
-
-%----------- CERTIFICATES -----------
-
-% \section{Certificates}
-  % \resumeSubHeadingListStart
-    
-    % \resumeOrganizationHeading
-      % {Procter \& Gamble VIA Certificate Program}{Feb 2022}{Business Skills, Data and Digital Skills, Project Management and Personal Productivity}
-    
-  % \resumeSubHeadingListEnd
-
-
-%----------- HOBBIES -----------
-
-% \section{Hobbies}
-  % \resumeSubHeadingListStart
-    % \small{\item{Swimming, Fitness, Eight-ball}}
-  % \resumeSubHeadingListEnd
-
-
-
-%----------- REFERENCES -----------
-
-% \section{References}
-  % \resumeSubHeadingListStart
-    
-  % \resumeSubHeadingListEnd
-
-
 
 %-------------------------------------------
 \end{document}
