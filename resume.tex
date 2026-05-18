@@ -11,15 +11,26 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{multicol}
 \usepackage{hyphenat}
 \usepackage{fontawesome}
 \usepackage{tikz}
+\usepackage{iftex}
 \usetikzlibrary{arrows.meta}
-\input{glyphtounicode}
+\ifPDFTeX
+  \input{glyphtounicode}
+\fi
 
 
 %---------- FONT OPTIONS ----------
-% sans-serif
+% sans-serif - Roboto
+\ifPDFTeX
+  \usepackage[scaled]{helvet}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Roboto}
+\fi
 % \usepackage[sfdefault]{FiraSans}
 % \usepackage[sfdefault]{roboto}
 % \usepackage[sfdefault]{noto-sans}
@@ -51,11 +62,13 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
+  \vspace{-4pt}\scshape\bfseries\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+\ifPDFTeX
+  \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -68,18 +81,18 @@
 
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\linewidth}[t]{l@{\extracolsep{\fill}}r}
+    \begin{tabularx}{0.97\linewidth}[t]{@{}>{\raggedright\arraybackslash}X r@{}}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabularx}\vspace{-7pt}
 }
 
 
 \newcommand{\resumeSubSubheading}[2]{
     \vspace{-2pt}\item
-    \begin{tabular*}{0.97\linewidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabularx}{0.97\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabularx}\vspace{-7pt}
 }
 
 
@@ -95,9 +108,9 @@
 
 \newcommand{\resumeProjectHeading}[2]{
     \vspace{-2pt}\item
-    \begin{tabular*}{0.97\linewidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabularx}{0.97\linewidth}{@{}>{\raggedright\arraybackslash}X r@{}}
       \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabularx}\vspace{-7pt}
 }
 
 
@@ -118,9 +131,27 @@
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
-\newcommand{\skillSlider}[2]{
-  \noindent\textbf{#1}\\[-2pt]
-  {\color{NavyBlue}\rule{#2\linewidth}{3.2pt}}\\[5pt]
+\newcommand{\timelineBullet}{
+  \textcolor{black}{\raisebox{0.25ex}{\tiny$\bullet$}}
+}
+
+\newcommand{\resumeTimelineListStart}{\begin{itemize}[leftmargin=0.28in, label={\timelineBullet}]}
+
+\newcommand{\skillSlider}[2]{%
+  \noindent\makebox[8cm][l]{\textbf{#1}}\hspace{6pt}%
+  \begin{tikzpicture}[baseline=-1pt]
+    \pgfmathtruncatemacro{\filled}{round(#2*5)}
+    \foreach \i in {1,...,5} {
+      \draw[gray!30, fill=gray!15, rounded corners=1.5pt]
+        ({(\i-1)*1.2}, 0) rectangle ({(\i-1)*1.2+1.1}, 0.18);
+    }
+    \ifnum\filled>0
+      \foreach \i in {1,...,\filled} {
+        \fill[gray!70, rounded corners=1.5pt]
+          ({(\i-1)*1.2}, 0) rectangle ({(\i-1)*1.2+1.1}, 0.18);
+      }
+    \fi
+  \end{tikzpicture}\\[9pt]
 }
 
 \newcommand{\timelineRow}[3]{
@@ -154,7 +185,7 @@
 \begin{center}
 \begin{minipage}{0.86\textwidth}
 \small\raggedright
-Embedded Software Engineer with 4+ years of experience in automotive and industrial systems. Specialized in low-level firmware development in C/C++, with hands-on expertise in AUTOSAR (Classic), FreeRTOS, and embedded communication (CAN). Strong background in hardware--software integration, including PCB design and real-time systems. Passionate about building reliable, efficient, and scalable embedded solutions.
+Embedded Software Engineer with 8+ years of experience in automotive and industrial systems. Specialized in low-level firmware development in C/C++, with hands-on expertise in AUTOSAR (Classic), FreeRTOS, and embedded communication (CAN). Strong background in hardware--software integration, including PCB design and real-time systems. Passionate about building reliable, efficient, and scalable embedded solutions.
 \end{minipage}
 \end{center}
 
@@ -162,7 +193,7 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
 
 \section{Career Timeline}
 \begin{center}
-\begin{tikzpicture}[x=1.20cm,y=0.52cm,>=Latex,font=\scriptsize]
+\begin{tikzpicture}[x=1.35cm,y=0.52cm,>=Latex,font=\scriptsize]
   % Rows and guide lines
   \foreach \y in {7,6,5,4,3,2,1} {
     \draw[gray!25,line width=0.2pt] (0,\y) -- (10,\y);
@@ -213,18 +244,33 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
   \resumeSubHeadingListStart
   \item{
     \small
-    \textbf{Core Competencies}\\[-2pt]
-    \skillSlider{Embedded C/C++}{0.95}
-    \skillSlider{AUTOSAR Classic (BSW/COM)}{0.90}
-    \skillSlider{RTOS Development (FreeRTOS)}{0.85}
-    \skillSlider{Hardware Interfaces \/ Drivers}{0.85}
-    \skillSlider{Verification (Verilog/SystemVerilog)}{0.70}
 
-    \textbf{Programming:} C, C++, Python, Verilog, SystemVerilog\\
-    \textbf{Technologies:} Git, Linux, Shell\\
-    \textbf{Applications:} KiCad, Ngspice\\
-    \textbf{Projects:} \href{https://nuttx.apache.org/}{Apache NuttX} Contributor\\
-    \textbf{Languages:} Romanian (Native), English (Professional)
+    \skillSlider{C}{0.95}
+    \skillSlider{C++}{0.90}
+    \skillSlider{Python}{0.90}
+    \skillSlider{Rust}{0.35}
+    \skillSlider{AUTOSAR Classic (BSW/COM)}{0.90}
+    \skillSlider{RTOS Development (FreeRTOS, Zephyr)}{0.85}
+    \skillSlider{Hardware Interfaces \/ Drivers}{0.85}
+    \skillSlider{Linux Systems \& Virtualization}{0.82}
+    \skillSlider{Firmware Architecture \& Optimization}{0.85}
+    
+
+    \textbf{Programming:} C, C++, Python, Rust, Verilog, SystemVerilog, Bash\\[5pt]
+    \textbf{Embedded:} STM32H743, Zephyr RTOS, NuttX, FreeRTOS, Device Tree, Linux Drivers\\[5pt]
+    \textbf{RTOS/OS:} FreeRTOS, POSIX, NuttX, QNX Neutrino, Zephyr\\[5pt]
+    \textbf{Protocols/Standards:} CAN, FlexRay, LIN, MISRA C, ISO 26262\\[5pt]
+    
+    \textbf{Linux/Systems:} Ubuntu, Arch Linux, Proxmox VE, LVM, PipeWire, systemd, Docker, Nextcloud, Nginx Proxy Manager\\[5pt]
+    \textbf{Networking:} MikroTik, RouterOS v7, CAPsMAN wireless, VLAN/subnets, reverse proxy, domain management\\[5pt]
+    \textbf{DevOps/Automation:} Forgejo, Act Runner, Make, CI/CD pipelines, Docker-based workflows, automation scripting\\[5pt]
+    
+    \textbf{Development Tools:} Git, SVN, GDB, Valgrind, J-Link, Logic Analyzers, STM32CubeMX, CANdb++, Pylint\\[5pt]
+    \textbf{EDA/CAD:} KiCad, Ngspice, 3D CAD design, maker/engineering prototyping\\[5pt]
+    \textbf{Home Automation/Self-Hosted:} Home Assistant, WLED, infrastructure automation, backup strategies\\[5pt]
+    
+    \textbf{Domains:} Automotive ECU, Industrial IoT, Safety-Critical Systems, Linux/Embedded Integration, DevOps\\[5pt]
+    \textbf{Open Source:} \href{https://nuttx.apache.org/}{Apache NuttX} Contributor\\
   }
   \resumeSubHeadingListEnd
 
@@ -234,7 +280,7 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
 %----------- WORK EXPERIENCE -----------
 
 \section{Work Experience}
-  \resumeSubHeadingListStart
+  \resumeTimelineListStart
 
     \resumeSubheading
       {Siemens SRL}{Brasov, Romania}
@@ -266,6 +312,7 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
             \resumeItem{Contributed to integration and validation in production-level environments}
         \resumeItemListEnd
 
+    \begin{samepage}
     \resumeSubheading
       {NoBug Consulting}{Brasov, Romania}
       {Internship Digital Design and Verification}{Nov 2019 \textbf{--} Sep 2020}
@@ -274,6 +321,7 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
             \resumeItem{Applied Universal Verification Methodology (UVM) for functional verification}
             \resumeItem{Developed testbenches for hardware modules and analyzed simulation results}
         \resumeItemListEnd
+    \end{samepage}
 
     \resumeSubheading
       {Transilvania University of Brasov}{Brasov, Romania}
@@ -314,7 +362,14 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
     
   \resumeSubHeadingListEnd
 
+\newpage
+
 %----------- EDUCATION -----------
+
+\setlength{\columnsep}{0.34in}
+\setlength{\columnseprule}{0.4pt}
+\begin{multicols}{2}
+\raggedcolumns
 
 \section{Education}
 
@@ -352,7 +407,7 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
     
   \resumeSubHeadingListEnd
 
-%----------- PROJECTS -----------
+\columnbreak
 
 \section{Projects}
   \resumeSubHeadingListStart
@@ -412,41 +467,8 @@ Embedded Software Engineer with 4+ years of experience in automotive and industr
 
   \resumeSubHeadingListEnd
 
-%----------- RELEVANT COURSEWORK -----------
+\vfill\null
+\end{multicols}
+\setlength{\columnseprule}{0pt}
 
-%\section{Relevant Coursework}
-  %\vspace{2pt}
-  %\resumeSubHeadingListStart
-    %\small{\item{
-        %\textbf{}{} \\ \vspace{3pt}
-        %
-        %\textbf{}{}
-    %}}
-  %\resumeSubHeadingListEnd
-
-%----------- CERTIFICATES -----------
-
-% \section{Certificates}
-  % \resumeSubHeadingListStart
-    
-    % \resumeOrganizationHeading
-      % {}{Feb 2022}{}
-    
-  % \resumeSubHeadingListEnd
-
-%----------- REFERENCES -----------
-
-% \section{References}
-%   \resumeSubHeadingListStart
-%   \resumeSubHeadingListEnd
-%----------- AWARDS & ACHIEVEMENTS -----------
-%\section{Awards \& Achievements}
-%  \vspace{2pt}
-%  \resumeSubHeadingListStart
-%    \small{\item{
-%        \textbf{}{} \\ \vspace{3pt}
-%        \textbf{}{} \\ \vspace{3pt}
-%    }}
-%  \resumeSubHeadingListEnd
-%-------------------------------------------
 \end{document}
