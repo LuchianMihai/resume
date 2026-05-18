@@ -13,6 +13,8 @@
 \usepackage{tabularx}
 \usepackage{hyphenat}
 \usepackage{fontawesome}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \input{glyphtounicode}
 
 
@@ -66,7 +68,7 @@
 
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\linewidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}\vspace{-7pt}
@@ -75,7 +77,7 @@
 
 \newcommand{\resumeSubSubheading}[2]{
     \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\linewidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}\vspace{-7pt}
 }
@@ -83,7 +85,7 @@
 
 \newcommand{\resumeEducationHeading}[6]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\linewidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
       \textit{\small#5} & \textit{\small #6} \\
@@ -93,7 +95,7 @@
 
 \newcommand{\resumeProjectHeading}[2]{
     \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\linewidth}{l@{\extracolsep{\fill}}r}
       \small#1 & #2 \\
     \end{tabular*}\vspace{-7pt}
 }
@@ -101,7 +103,7 @@
 
 \newcommand{\resumeOrganizationHeading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{0.97\linewidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \textit{\small #2} \\
       \textit{\small#3}
     \end{tabular*}\vspace{-7pt}
@@ -115,6 +117,16 @@
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\newcommand{\skillSlider}[2]{
+  \noindent\textbf{#1}\\[-2pt]
+  {\color{NavyBlue}\rule{#2\linewidth}{3.2pt}}\\[5pt]
+}
+
+\newcommand{\timelineRow}[3]{
+  \noindent\small\textbf{#1}\\[-2pt]
+  \hspace*{#2}{\color{NavyBlue}\rule{#3}{3pt}}\\[5pt]
+}
 
 %-------------------------------------------
 
@@ -136,27 +148,88 @@
     \faMapMarker \hspace{.5pt} \href{https://www.google.com/maps/place/Bra%C8%99ov/@45.6525685,25.5140627,12z/data=!3m1!4b1!4m6!3m5!1s0x40b35b862aa214f1:0x6cf5f2ef54391e0f!8m2!3d45.6426802!4d25.5887252!16zL20vMGhqdGc?entry=ttu}{Brasov, Romania}
 \end{center}
 
-%----------- EDUCATION -----------
+%----------- BIO -----------
 
-\section{Education}
+\section{Bio}
+\begin{center}
+\begin{minipage}{0.86\textwidth}
+\small\raggedright
+Embedded Software Engineer with 4+ years of experience in automotive and industrial systems. Specialized in low-level firmware development in C/C++, with hands-on expertise in AUTOSAR (Classic), FreeRTOS, and embedded communication (CAN). Strong background in hardware--software integration, including PCB design and real-time systems. Passionate about building reliable, efficient, and scalable embedded solutions.
+\end{minipage}
+\end{center}
 
-\resumeSubHeadingListStart
-  
-  \resumeSubheading
-    {Transilvania University of Brasov}{Brasov, Romania}
-    {B.Sc. in Computer Science}{Sep 2014 \textbf{--} Jun 2018}
-       \resumeItemListStart
-           \resumeItem{Faculty of Electrical Engineering and Computer Science, Department of Applied Electronics}
-       \resumeItemListEnd
+%----------- CAREER TIMELINE -----------
 
-  \resumeSubheading
-    {Transilvania University of Brasov}{Brasov, Romania}
-    {M.Sc. in Computer Science}{Oct 2023 \textbf{--} Expected}
-       \resumeItemListStart
-           \resumeItem{Faculty of Mathematics and Informatics, Department of Applied Informatics}
-       \resumeItemListEnd
-  
-\resumeSubHeadingListEnd
+\section{Career Timeline}
+\begin{center}
+\begin{tikzpicture}[x=1.20cm,y=0.52cm,>=Latex,font=\scriptsize]
+  % Rows and guide lines
+  \foreach \y in {7,6,5,4,3,2,1} {
+    \draw[gray!25,line width=0.2pt] (0,\y) -- (10,\y);
+  }
+
+  % Employer labels
+  \node[anchor=east] at (-0.2,7) {Siemens Industry Software};
+  \node[anchor=east] at (-0.2,6) {PREH};
+  \node[anchor=east] at (-0.2,5) {Transilvania University};
+  \node[anchor=east] at (-0.2,4) {NoBug Consulting};
+  \node[anchor=east] at (-0.2,3) {Elektrobit Automotive};
+  \node[anchor=east] at (-0.2,2) {Bertrandt Engineering Tech.};
+  \node[anchor=east] at (-0.2,1) {Siemens SRL};
+
+  % Role bars (2016 baseline -> 2026)
+  \fill[gray!65,rounded corners=1pt] (0.50,6.84) rectangle (1.50,7.16);
+  \fill[gray!65,rounded corners=1pt] (1.50,5.84) rectangle (1.75,6.16);
+  \fill[gray!65,rounded corners=1pt] (1.75,4.84) rectangle (3.75,5.16);
+  \fill[gray!65,rounded corners=1pt] (3.83,3.84) rectangle (4.75,4.16);
+  \fill[orange!80!black,rounded corners=1pt] (4.75,2.84) rectangle (6.25,3.16);
+  \fill[orange!80!black,rounded corners=1pt] (6.25,1.84) rectangle (7.58,2.16);
+  \fill[red!75!black,rounded corners=1pt] (7.75,0.84) rectangle (10.00,1.16);
+
+  % Bottom time axis bar
+  \fill[black!70] (0,0) rectangle (10,0.45);
+  \foreach \x/\yr in {0/2016,2/2018,4/2020,6/2022,8/2024,10/2026} {
+    \node[text=white,font=\scriptsize] at (\x,0.23) {\yr};
+  }
+
+  % Milestones
+  \fill[blue!75!black] (0.50,-0.08) -- (0.37,-0.28) -- (0.63,-0.28) -- cycle;
+  \node[anchor=north,text=blue!75!black] at (0.50,-0.30) {Career Start};
+
+  \fill[orange!85!black] (4.75,-0.08) -- (4.62,-0.28) -- (4.88,-0.28) -- cycle;
+  \node[anchor=north,text=orange!85!black] at (4.75,-0.30) {Automotive Focus};
+
+  \fill[green!60!black] (7.75,-0.08) -- (7.62,-0.28) -- (7.88,-0.28) -- cycle;
+  \node[anchor=north,text=green!60!black] at (7.75,-0.30) {Industrial Systems};
+
+  \fill[green!60!black] (10.00,-0.08) -- (9.87,-0.28) -- (10.13,-0.28) -- cycle;
+  \node[anchor=north,text=green!60!black,font=\scriptsize\bfseries] at (10.00,-0.30) {Present};
+\end{tikzpicture}
+\end{center}
+
+%----------- SKILLS -----------
+
+\section{Skills}
+  \resumeSubHeadingListStart
+  \item{
+    \small
+    \textbf{Core Competencies}\\[-2pt]
+    \skillSlider{Embedded C/C++}{0.95}
+    \skillSlider{AUTOSAR Classic (BSW/COM)}{0.90}
+    \skillSlider{RTOS Development (FreeRTOS)}{0.85}
+    \skillSlider{Hardware Interfaces \/ Drivers}{0.85}
+    \skillSlider{Verification (Verilog/SystemVerilog)}{0.70}
+
+    \textbf{Programming:} C, C++, Python, Verilog, SystemVerilog\\
+    \textbf{Technologies:} Git, Linux, Shell\\
+    \textbf{Applications:} KiCad, Ngspice\\
+    \textbf{Projects:} \href{https://nuttx.apache.org/}{Apache NuttX} Contributor\\
+    \textbf{Languages:} Romanian (Native), English (Professional)
+  }
+  \resumeSubHeadingListEnd
+
+
+\newpage
 
 %----------- WORK EXPERIENCE -----------
 
@@ -195,7 +268,7 @@
 
     \resumeSubheading
       {NoBug Consulting}{Brasov, Romania}
-      {Internship Digital Design and Verification}{Nov 2019 \textbf{--} Feb 2020}
+      {Internship Digital Design and Verification}{Nov 2019 \textbf{--} Sep 2020}
         \resumeItemListStart
             \resumeItem{Performed digital design verification using SystemVerilog and Cadence tools}
             \resumeItem{Applied Universal Verification Methodology (UVM) for functional verification}
@@ -214,7 +287,7 @@
 
     \resumeSubheading
       {PREH}{Brasov, Romania}
-      {Internship PCB Layout Designer}{Jul 2017 \textbf{--} Ocv 2017}
+      {Internship PCB Layout Designer}{Jul 2017 \textbf{--} Oct 2017}
         \resumeItemListStart
             \resumeItem{Designed PCB layouts using Altium Designer for training and prototype projects}
             \resumeItem{Gained hands-on experience with PCB manufacturing processes and layout techniques}
@@ -241,6 +314,21 @@
     
   \resumeSubHeadingListEnd
 
+%----------- EDUCATION -----------
+
+\section{Education}
+
+\resumeSubHeadingListStart
+  
+  \resumeSubheading
+    {Transilvania University of Brasov}{Brasov, Romania}
+    {B.Sc. in Computer Science}{Sep 2014 \textbf{--} Jun 2018}
+       \resumeItemListStart
+           \resumeItem{Faculty of Electrical Engineering and Computer Science, Department of Applied Electronics}
+       \resumeItemListEnd
+  
+\resumeSubHeadingListEnd
+
 %----------- RESEARCH EXPERIENCE -----------
 
 \section{Research Experience}
@@ -248,7 +336,7 @@
   
     \resumeSubheading
       {The Quality-Assurance Test of the ATLAS New Small Wheel Read-Out Controller ASIC}{}
-      {Proceeding of Science (PoS), 081, 2019}{***}
+      {Proceedings of Science (PoS), 081, 2019}{***}
         \resumeItemListStart
             \resumeItem{\textbf{Authors:} S. Popa, R. Coliban, \textbf{M. Luchian}, M. Ivanovici}
             \resumeItem{Undergraduate Research Assistant @ \textit{Transilvania University of Brasov}}
@@ -263,17 +351,6 @@
         \resumeItemListEnd
     
   \resumeSubHeadingListEnd
-
-%----------- ORGANIZATIONS -----------
-
-\section{Organizations}
-  \resumeSubHeadingListStart
-    
-     \resumeOrganizationHeading
-       {Transivania University's of Brasov Racing Team \textit{``Blue Streamline''}}{Oct 2016 \textbf{--} Jul 2019}
-       {Formula Student Team Member, Lead of Electronics Department}
-    
-   \resumeSubHeadingListEnd
 
 %----------- PROJECTS -----------
 
@@ -318,58 +395,19 @@
     
   \resumeSubHeadingListEnd
 
-
-
-%----------- SKILLS -----------
-
-\section{Skills}
-  \resumeSubHeadingListStart
-    \small{\item{
-        \textbf{Programming:}{
-            C, 
-            C++, 
-            Python,  
-            Verilog, 
-            SystemVerilog
-        }
-        
-        \textbf{Technologies:}{
-            Git, 
-            Linux, 
-            Shell
-        }
-        
-        \textbf{Languages:}{
-            Romanian (Native), 
-            English (Professional)
-        }
-
-        \textbf{Projects:}{ 
-            \href{https://nuttx.apache.org/}{Apache NuttX} Contributor
-        }
-        
-        \textbf{Applications:}{ KiCad, Ngspice} \\
-        
-        % \textbf{Frameworks}{: X, X, X} \\
-        % \textbf{Developer Tools}{: X, X, X} \\
-        % \textbf{Libraries}{: X, X, X} \\
-
-    }}
-  \resumeSubHeadingListEnd
-
 %----------- HOBBIES -----------
 
 \section{Hobbies}
   \resumeSubHeadingListStart
 
     \item{
-      Licensing as an Skydiver \textit{@ Romanian Air Club.}
+      Licensed Skydiver \textit{@ Romanian Air Club.}
       
       Core Electrical Scrutineer \textit{@ Formula Student Spain.}
       
-      Hobbyst welder, Experienced in TIG welding with steel and aluminium filler rods as well as stick welding.
+      Hobbyist welder, Experienced in TIG welding with steel and aluminium filler rods as well as stick welding.
 
-      Hobbyst composite materials manufacturer, Experienced in Carbon fiber, Kevlar fiber and Glass fiber.
+      Hobbyist composite materials manufacturer, Experienced in Carbon fiber, Kevlar fiber and Glass fiber.
     }
 
   \resumeSubHeadingListEnd
